@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!--For Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&family=Mulish:wght@300;400;500&family=Open+Sans:wght@300;400&family=Poppins:wght@100&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: black;
+        margin-top: 15vh;
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      .header {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgb(15, 15, 15);
+        color: white;
+        height: 15vh;
+        font-family: Montserrat, sans-serif;
+      }
+
+      .navigation-bar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1em;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 1em;
+        border-radius: 5px;
+        transition: all 0.15s;
+        cursor: pointer;
+        column-gap: 0.6em;
+      }
+
+      .nav:hover {
+        background-color: #28282b;
+      }
+
+      .navigation-bar a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .social-bar {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(15, 15, 15);
+
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        row-gap: 50px;
+      }
+
+      .social-links {
+        color: white;
+      }
+
+      .main-dashboard {
+        margin-top: 27.5vh;
+        margin-left: auto;
+        margin-right: auto;
+        height: 75vh;
+        width: 100%;
+        color: white;
+
+        display: flex;
+        width: 80%;
+        column-gap: 2em;
+      }
+
+      .maindash-text {
+        font-family: Mulish, sans-serif;
+        padding: 2em;
+        border-top: solid 1px;
+      }
+
+      .maindash-text div:nth-child(1) {
+        font-size: 4em;
+        color: #424242;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+
+      .maindash-text div:nth-child(2) {
+        width: 65%;
+        margin-top: 2em;
+      }
+
+      .picture-container img {
+        max-width: 100%;
+        border-radius: 5px;
+      }
+
+      .academic-container {
+        background-color: #1b1212;
+
+        padding: 3em;
+      }
+
+      .sched-header-container h1 {
+        text-align: center;
+        color: white;
+        font-family: Poppins, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .table-container {
+        padding: 2em;
+        border-radius: 10px;
+        background-color: white;
+        width: 85%;
+        margin: 0 auto;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      .sched-time {
+        border: solid 1px;
+        border-radius: 2px;
+      }
+
+      .empty-cell {
+        border: none;
+      }
+
+      .hobby-information {
+        min-height: 29em;
+        padding: 1em;
+        box-shadow: -1px -2px 8px 1px rgba(163, 49, 49, 0.76);
+        -webkit-box-shadow: -1px -2px 8px 1px rgba(163, 49, 49, 0.76);
+        -moz-box-shadow: -1px -2px 8px 1px rgba(163, 49, 49, 0.76);
+      }
+
+      .hobbies-container {
+        padding: 4em;
+        margin: 0 auto;
+        width: 80%;
+        color: white;
+      }
+
+      .hobbies-header-container {
+        text-align: center;
+        color: white;
+        font-family: Poppins, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        margin-bottom: 0.5em;
+      }
+
+      .hobby-info-container {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 3em;
+        place-items: center;
+      }
+
+      .hobby-number {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hobby-number p {
+        border: solid 1px;
+        padding: 0.5em 1.5em;
+        border-radius: 1.5em;
+        font-family: monospace;
+        font-size: 1rem;
+      }
+
+      .hobby-picture {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hobby-picture img {
+        max-width: 75%;
+        border-radius: 5px;
+      }
+
+      .hobby-title {
+        display: flex;
+        justify-content: center;
+        font-family: Open Sans, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 1.2rem;
+        margin: 1em 0;
+      }
+
+      .hobby-description {
+        color: #aaa6a6;
+        display: flex;
+        margin: 0 auto;
+        text-align: center;
+        width: 80%;
+        font-family: Roboto, sans-serif;
+        font-weight: 300;
+      }
+
+      .music-container {
+        background-color: #1b1212;
+        color: white;
+        padding: 3em;
+      }
+
+      .music-header-container {
+        text-align: center;
+        color: white;
+        font-family: Poppins, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.7em;
+        margin-bottom: 3em;
+      }
+
+      .music-information {
+        display: flex;
+        margin: 0 auto;
+        column-gap: 2em;
+        border: none;
+        border-radius: 5px;
+        width: 80%;
+        padding: 2em;
+        border: solid 1px;
+        font-family: Poppins, sans-serif;
+        box-shadow: -1px -2px 24px 6px rgba(94, 45, 45, 0.76);
+        -webkit-box-shadow: -1px -2px 24px 6px rgba(94, 45, 45, 0.76);
+        -moz-box-shadow: -1px -2px 24px 6px rgba(94, 45, 45, 0.76);
+      }
+
+      .music-list-container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="navigation-bar">
+        <div class="nav">
+          <i class="fa-solid fa-user fa-sm"></i>
+          <li><a href="#profile">Profile</a></li>
+        </div>
+
+        <div class="nav">
+          <i class="fa-solid fa-book"></i>
+          <li><a href="#academic">Academic</a></li>
+        </div>
+
+        <div class="nav">
+          <i class="fa-solid fa-chart-simple"></i>
+          <li><a href="#hobbies">Hobbies</a></li>
+        </div>
+
+        <div class="nav">
+          <i class="fa-solid fa-music"></i>
+          <li><a href="#music">Music Interest</a></li>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-bar">
+      <li>
+        <a
+          href="https://www.facebook.com/rhemgiou"
+          target="_blank"
+          class="social-links"
+          ><i class="fa-brands fa-facebook fa-lg"></i
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj7x7G2xqKBAxXMcGwGHWoCDjMQFnoECBIQAQ&url=https%3A%2F%2Ftwitter.com%2Fgiouuuu&usg=AOvVaw3H5fpzFiHlOAJs_1A5CbJx&opi=89978449"
+          target="_blank"
+          class="social-links"
+          ><i class="fa-brands fa-twitter fa-lg"></i
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://www.tiktok.com/@pixelatedcorn4"
+          target="_blank"
+          class="social-links"
+          ><i class="fa-brands fa-tiktok fa-lg"></i
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/_rhemmm/"
+          target="_blank"
+          class="social-links"
+          ><i class="fa-brands fa-instagram fa-lg"></i
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/Prof-Pix"
+          target="_blank"
+          class="social-links"
+          ><i class="fa-brands fa-github fa-lg"></i
+        ></a>
+      </li>
+    </div>
+
+    <div class="main-dashboard" id="profile">
+      <div class="maindash-text">
+        <div>Welcome.</div>
+
+        <div>
+          My name is Rhem Giou Salvador, and I am 18 years old. I am an aspiring
+          software engineer. A second-year student who is currently pursuing a
+          Bachelor of Science in Computer Science at the Technological Institute
+          of the Philippines.
+          <br />
+          <br />
+          I am passionate about what I do, and I want to create a lot of web
+          applications that can help many people in the future.
+        </div>
+      </div>
+
+      <div class="picture-container">
+        <img
+          src="https://scontent.fmnl25-4.fna.fbcdn.net/v/t39.30808-6/358572856_979378080037305_2662538231142792607_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=RoqAH4B8g1sAX8rS6Pc&_nc_ht=scontent.fmnl25-4.fna&oh=00_AfB1-eE85_mgoK67QAjtw0QUrHfAiZQV5aqP6JPvGypmmA&oe=650441AF"
+        />
+      </div>
+    </div>
+
+    <div class="academic-container" id="academic">
+      <div class="sched-header-container">
+        <h1>Schedule for 1st Semester SY 2023 - 2024</h1>
+      </div>
+
+      <div class="table-container">
+        <table style="width: 100%; font-family: monospace">
+          <tr>
+            <th>Time</th>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+
+          <tr>
+            <td class="sched-time">07:30 AM - 08:00 AM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">08:00 AM - 08:30 AM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">08:30 AM - 09:30 AM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="8" style="background-color: lightgreen">
+              MATH 008 - CS21S1
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">09:00 AM - 09:30 AM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">09:30 AM - 10:00 AM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="2" style="background-color: pink">
+              MATH 014 - CS11S4
+            </td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="2" style="background-color: pink">
+              MATH 014 - CS11S4
+            </td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="2" style="background-color: pink">
+              MATH 014 - CS11S4
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">10:00 AM - 10:30 AM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">10:30 AM - 11:00 AM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="2" style="background-color: brown">
+              SOCSC 005 - BAFM41S2
+            </td>
+            <td rowspan="3" style="background-color: gray">CS 001 - CS11S4</td>
+            <td rowspan="2" style="background-color: brown">
+              SOCSC 005 - BAFM41S2
+            </td>
+            <td rowspan="3" style="background-color: gray">CS 001 - CS11S4</td>
+            <td rowspan="2" style="background-color: brown">
+              SOCSC 005 - BAFM41S2
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">11:00 AM - 11:30 AM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">11:30 AM - 12:00 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">12:00 PM - 12:30 PM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="3" style="background-color: lightblue">
+              GEE 001 - CS21S4
+            </td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="3" style="background-color: lightblue">
+              GEE 001 - CS21S4
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">12:30 PM - 01:00 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">01:00 PM - 01:30 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">01:30 PM - 02:00 PM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="6" style="background-color: green">CS 409 - CS21S4</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="4" style="background-color: green">CS 409 - CS21S4</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">02:00 PM - 02:30 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">02:30 PM - 03:00 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">03:00 PM - 03:30 PM</td>
+            <td class="empty-cell">&nbsp;</td>
+            <td rowspan="4" style="background-color: yellow">
+              GEE 002 - ARCH12S1
+            </td>
+            <td rowspan="4" style="background-color: yellow">
+              GEE 002 - ARCH12S1
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">03:30 PM - 04:00 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">04:00 PM - 04:30 PM</td>
+          </tr>
+
+          <tr>
+            <td class="sched-time">04:30 PM - 05:00 PM</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="hobbies-container" id="hobbies">
+      <div class="hobbies-header-container">
+        <h1>HOBBIES</h1>
+      </div>
+
+      <div class="hobby-info-container">
+        <div class="hobby-information">
+          <div class="hobby-number"><p>1</p></div>
+          <div class="hobby-picture">
+            <img
+              src="https://www.si.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_760/MTk2NTMzODMyNjI1Njk0NTI2/best-outdoor-basketball_hero.webp"
+              alt="basketball"
+            />
+          </div>
+          <div class="hobby-title">Basketball</div>
+          <div class="hobby-description">
+            Choosing basketball as a hobby is a good idea because it is one of
+            the common everyday sports. People can play it anywhere like in the
+            gym, school, park, and house. What you need to prepare is only your
+            energy and the ball. This is the most strenuous cardiovascular
+            activities and it helps you to burn your calories more.
+          </div>
+        </div>
+
+        <div class="hobby-information">
+          <div class="hobby-number"><p>2</p></div>
+          <div class="hobby-picture">
+            <img
+              src="https://prod.assets.earlygamecdn.com/images/MobileLegendsCodes-Banner.jpg?transform=article3x_webp"
+              alt="onlinegames"
+            />
+          </div>
+          <div class="hobby-title">Online Games</div>
+          <div class="hobby-description">
+            My “hobby” is gaming. I usually don’t use the term hobby, but I play
+            quite often. Gaming is my way to relax. I spend my free time playing
+            games online with my friends and it’s the way I connect with my
+            friends.
+          </div>
+        </div>
+
+        <div class="hobby-information">
+          <div class="hobby-number"><p>3</p></div>
+          <div class="hobby-picture">
+            <img
+              src="https://www.vistaresidences.com.ph/assets/img/watching-kdrama-in-condo-in-manila.png"
+              alt="watching kdrama"
+            />
+          </div>
+          <div class="hobby-title">Watching Kdrama</div>
+          <div class="hobby-description">
+            K-dramas can improve our mental health. Besides that, dramas can
+            also be considered good for those who deal with anxiety, or even
+            normally they can help us boost our mood. There are lots of
+            advantages that these Korean dramas bring to the table.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="music-container" id="music">
+      <div class="music-header-container">
+        <h1>MUSIC INTEREST</h1>
+      </div>
+
+      <div class="music-list-container">
+        <div class="music-information">
+          <div class="music-video">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/ISWivyT7pIM?si=pXIhqRH8J86AP-a6"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="music-description">
+            <p>COLN - Baliw</p>
+            <p>September 29, 2018</p>
+            <br />
+            <p>
+              I love this song because it makes me feel so motivated, even after
+              a long, tiring day. It also makes me feel stronger for some reason
+              and breaks my chain of sadness. A song by an OPM artist that I
+              would always tell my friends to listen to.
+            </p>
+          </div>
+        </div>
+
+        <div class="music-information">
+          <div class="music-description">
+            <p>Sunkissed Lola - Pasilyo</p>
+            <p>January 30, 2023</p>
+            <br />
+            <p>
+              The more you listen to the song, the more you'll like it. This
+              song gets all the love and respect in the world. Love the way his
+              voice sounds. The band members are also killing it. You can tell
+              that they are having a good time and really enjoy making music.
+            </p>
+          </div>
+
+          <div class="music-video">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/-qHDsh0iTGs?si=K1-dkSMzTHQl_i1P"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="music-information">
+          <div class="music-video">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/_LePh8_coJs?si=9tSVgVQvJaUkNdWD"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="music-description">
+            <p>Zildjan Parma - Ligaw Tingino</p>
+            <p>June 28, 2022</p>
+            <br />
+            <p>
+              The acoustic song is about a guy who can't work up the courage to
+              properly court the girl he likes, so he can only admire her from
+              afar. I really can relate to the song, which is why I love
+              listening to it over and over again.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/ea3bfd0f41.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
